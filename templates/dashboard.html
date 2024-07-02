@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PG Movie Login Page</title>
+    <link rel="stylesheet" href="./static/css/dashboard.css">
+ 
+</head>
+<body>
+    <nav>
+        <a href="#"><img src="./static/readme-images/project-logo.png" alt="logo"></a>
+    </nav>
+    <div class="form-wrapper">
+        <h1>User Dashboard</h1>
+        <p><b>Name:</b> {{ user.name }}</p>
+        <p><b>Email:</b> {{ user.email }}</p>
+
+        <a href="/logout" onclick="showLogoutAlert()">
+            <button type="button">Logout</button>
+        </a>
+    </div>
+    <script>
+        function showLogoutAlert() {
+            alert("Logout successful!");
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Recommendations</title>
+    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/recom.css')}}">
+</head>
+<body>
+  <div class="nav-bar">
+    <form action="/recommendations" method="POST" class="search-form">
+      <a href="/" class="logo">
+        <img src="./static/readme-images/project-logo.png" alt="PG Movie logo" />
+      </a>
+      <label for="movie_name">Enter movie name:</label>
+      <input type="text" id="movie_name" name="movie_name" class="search-input">
+      <input type="submit" value="Get Movies" class="search-button">
+    </form>
+  </div>
+  <div class="container">
+    {% if error %}
+        <p class="error">{{ error }}</p>
+    {% endif %}
+    {% if recommendations %}
+        <ul class="recommendation-list">
+            {% for movie in recommendations %}
+                <li class="movie-item">
+                    <h3>{{ movie }}</h3>
+                    {% if poster_urls[loop.index0] %}
+                        <img src="{{ poster_urls[loop.index0] }}" alt="{{ movie }}" class="movie-poster">
+                    {% else %}
+                        <p>No poster available!</p>
+                    {% endif %}
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>Recommendations not found!</p>
+    {% endif %}
+  </div>
+  <div class="footer-bottom">
+    <div class="container">
+      <h1>Search for Best Movies........</h1>
+      <p class="copyright">
+        &copy; 2024 <a href="#"><span>PG_Movie</span></a> || All Rights Reserved.
+      </p>
+    </div>
+  </div>
+</body>
+</html>

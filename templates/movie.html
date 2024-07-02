@@ -1,0 +1,25 @@
+<!-- movie.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ movie.title }}</title>
+    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/movie.css')}}">
+</head>
+<body>
+    <div class="container">
+        <h1 class="movie-title">{{ movie.title }}</h1>
+        <div class="movie-details">
+            <img src="{{ url_for('static', filename='images/' + movie.image) }}" alt="{{ movie.title }}" class="movie-image">
+            <p class="movie-description">{{ movie.description }}</p>
+            <p><strong>Genre:</strong> {{ movie.genre }}</p>
+            <p><strong>Director:</strong> {{ movie.director }}</p>
+            <p><strong>Release Date:</strong> {{ movie.release_date }}</p>
+            <p><strong>Rating:</strong> {{ movie.rating }}</p>
+        </div>
+        <a href="{{ url_for('all_movies') }}" class="back-link">&larr; Back to All Movies</a>
+    </div>
+</body>
+</html>

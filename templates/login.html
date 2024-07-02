@@ -1,0 +1,59 @@
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>PG Movie Login Page</title>
+        <link rel="stylesheet" href="./static/css/login.css">
+    
+    </head>
+    <body>
+        <nav>
+            <a href="#"><img src="./static/readme-images/project-logo.png" alt="logo"></a>
+        </nav>
+        <div class="form-wrapper">
+            <h1>Sign In</h1>
+            {% with messages = get_flashed_messages(with_categories=true) %}
+  {% if messages %}
+    {% for category, message in messages %}
+      <div class="alert alert-{{ category }}">
+        {{ message }}
+      </div>
+    {% endfor %}
+  {% endif %}
+{% endwith %}
+        
+            <form action="/login" method="POST">
+        
+                <h2>Email</h2>
+                <div class="form-control">
+                    <input type="email" id="email" name="email" required>
+                    <label for="email">Email</label> 
+                </div>
+                <h2>Password</h2>
+                <div class="form-control">
+                    <input type="password" id="password" name="password" required>
+                    <label for="password">Password</label> 
+                </div>
+                {% block content %}{% endblock %}
+                <button type="submit">Sign In</button> 
+                <div class="form-help"> 
+                    <div class="remember-me">
+                        <input type="checkbox" id="remember-me">
+                        <label for="remember-me">Remember me</label>
+                    </div>
+                    <a href="#">Need help?</a>
+                </div>
+            </form>
+            
+            <p>Create an account || <a href="/register">Register</a></p>
+            
+        
+            <small>
+                This page is protected by Google reCAPTCHA to ensure you're not a bot. 
+                <a href="#">Learn more.</a>
+            </small>
+        </div>
+    </body>
+
+    </html>
